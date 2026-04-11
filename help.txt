@@ -1,0 +1,5 @@
+crocsOrigin
+the browser blocks only request from on endpoint to onther end point so if request from 5153
+of react to 8080 of spring it will block it.
+So we use crocsorigin to help know browser that the end point could interact
+in postman we do not need the crocsorigin the request are blocked by browser only
