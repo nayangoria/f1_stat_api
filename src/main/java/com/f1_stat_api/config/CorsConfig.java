@@ -8,19 +8,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsConfig {
 
-    @Value("${FRONTEND_URL:http://localhost:5173}")
-    private String frontendUrl;
-
     @Bean
     public WebMvcConfigurer corsConfigurer() {
+        String frontendUrl = System.getenv("FRONTEND_URL") != null
+                ? System.getenv("FRONTEND_URL")
+                : "http://localhost:5173";
+
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins(
-                                "http://localhost:5173",
-                                frontendUrl
-                        )
+                        .allowedOriginPatterns("*")
                         .allowedMethods("GET", "POST", "DELETE", "PUT")
                         .allowedHeaders("*");
             }
