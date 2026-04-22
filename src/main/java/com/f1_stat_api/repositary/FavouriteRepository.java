@@ -5,10 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 public interface FavouriteRepository extends JpaRepository<Favourite, String> {
-   @Transactional
-    void deleteByDriverId(String id);
-    boolean existsByDriverId(String id);
+
+   List<Favourite> findByUserId(Long userId);
+    @Transactional
+    void deleteByUserIdAndDriverId(Long userId,String id);
+    boolean existsByUserIdAndDriverId(Long userId,String id);
 
 }

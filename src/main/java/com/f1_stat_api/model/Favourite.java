@@ -11,4 +11,5 @@ public class Favourite {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String driverId;
+    private Long UserId;
 }
