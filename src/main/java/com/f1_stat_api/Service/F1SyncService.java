@@ -30,7 +30,7 @@ public class F1SyncService implements CommandLineRunner {
 
         System.out.println("Fetching drivers from Jolpica API...");
 
-        String url = "https://api.jolpi.ca/ergast/f1/2024/drivers";
+        String url = "https://api.jolpi.ca/ergast/f1/2026/drivers";
         Map response = restTemplate.getForObject(url, Map.class);
 
         Map mrData = (Map) response.get("MRData");
