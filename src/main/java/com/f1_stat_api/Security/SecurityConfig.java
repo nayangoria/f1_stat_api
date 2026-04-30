@@ -21,10 +21,13 @@ public class SecurityConfig {
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/auth/register").permitAll()
+                        .requestMatchers("/api/auth/login").permitAll()
                         .requestMatchers("/api/drivers/**").permitAll()
                         .requestMatchers("/api/driver/favourite/**").permitAll()
                         .anyRequest().authenticated()
-                );
+                )
+                .cors(cors -> cors.disable()); // temporarily disable cors check
         return http.build();
     }
 
